@@ -24,11 +24,11 @@ const STATIC_ROUTES: {
   },
   {
     route: "portfolio",
-    title: "Portfolio & Client Case Studies — FinTech, Cloud & AI | Combine Nexus",
+    title: "Portfolio & Live Client Work — Dolly's (dollystavern.com) | Combine Nexus",
     description:
-      "Discover how Combine Nexus engineered real-time banking analytics, healthcare AI diagnostics, and 1M+ concurrent user cloud migrations for enterprise clients.",
+      "Explore Combine Nexus live client work: Dolly's — Italian & Cheese Wheel Pasta, Beer & Wine (dollystavern.com), featuring interactive menus, reservations, and delivery integration.",
     keywords:
-      "IT case studies, software development portfolio, cloud migration case study, healthcare AI project, fintech analytics platform, Combine Nexus work",
+      "Combine Nexus portfolio, dollystavern.com, Dolly's Italian Cheese Wheel Pasta website, restaurant web development USA, custom web design case study",
   },
   {
     route: "about",

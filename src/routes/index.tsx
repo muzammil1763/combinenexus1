@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import {
   ArrowRight, Code2, Cloud, Brain, Shield, Smartphone, Palette,
   Compass, Workflow, Star, CheckCircle2, Sparkles,
-  Database, Globe, GitBranch, Layers, Terminal,
+  Database, Globe, GitBranch, Layers, Terminal, ExternalLink,
 } from "lucide-react";
 import logo from "@/assets/combine-nexus-logo.jpeg";
+import dollysImg from "@/assets/dollys-tavern.jpg";
 import { Counter } from "@/components/site/Counter";
 import { SiteLayout } from "@/components/site/Layout";
 import { SEO } from "@/components/site/SEO";
@@ -212,9 +213,15 @@ const SERVICES = [
 ];
 
 const PROJECTS = [
-  { tag: "FinTech", title: "Atlas Banking Analytics", desc: "Real-time analytics platform processing 4M+ daily transactions." },
-  { tag: "Healthcare AI", title: "MedSight Diagnostics", desc: "ML platform helping radiologists detect anomalies 38% faster." },
-  { tag: "E-commerce", title: "NorthRetail Cloud Migration", desc: "Re-platformed monolith to scale to 1M+ concurrent shoppers." },
+  {
+    tag: "Web Development & UI/UX",
+    location: "El Cerrito, California",
+    title: "Dolly's — Italian & Cheese Wheel Pasta, Beer & Wine",
+    desc: "Bespoke restaurant web platform featuring interactive menus, online table reservations, catering inquiries, and seamless delivery integration with Uber Eats, DoorDash, Grubhub, and ezCater.",
+    url: "https://dollystavern.com/",
+    image: dollysImg,
+    tech: ["React", "TypeScript", "Tailwind CSS", "UI/UX Design", "SEO", "Reservations & Delivery"],
+  },
 ];
 
 const TESTIMONIALS = [
@@ -410,24 +417,66 @@ function HomePage() {
             <h2 className="text-4xl md:text-5xl font-bold mt-3">Projects we're proud of</h2>
           </div>
           <Link to="/portfolio" className="text-primary font-semibold inline-flex items-center gap-2">
-            View all <ArrowRight size={16} />
+            View portfolio <ArrowRight size={16} />
           </Link>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid gap-8">
           {PROJECTS.map((p, i) => (
-            <motion.div key={p.title}
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="group glass rounded-2xl overflow-hidden hover:border-[#E53935]/40 transition" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-              <div className="aspect-[4/3] bg-brand-gradient relative">
-                <div className="absolute inset-0 bg-background/30 group-hover:bg-background/10 transition" />
-                <div className="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-background/60 backdrop-blur text-xs font-semibold">
+              className="group glass rounded-3xl overflow-hidden grid lg:grid-cols-12 border border-[#E53935]/20 hover:border-[#E53935]/45 transition-all"
+            >
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lg:col-span-7 relative overflow-hidden bg-black block"
+              >
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  width={1014}
+                  height={484}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-background/80 backdrop-blur text-xs font-semibold border border-white/10">
                   {p.tag}
                 </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-semibold text-lg">{p.title}</h3>
-                <p className="text-sm text-muted-foreground mt-2">{p.desc}</p>
+              </a>
+              <div className="lg:col-span-5 p-8 md:p-10 flex flex-col justify-center">
+                <span className="text-xs font-mono text-primary uppercase tracking-wider">{p.location}</span>
+                <h3 className="font-bold text-2xl md:text-3xl mt-2 leading-snug">{p.title}</h3>
+                <p className="text-sm md:text-base text-muted-foreground mt-4 leading-relaxed">{p.desc}</p>
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {p.tech.map((t) => (
+                    <span key={t} className="px-3 py-1 rounded-full bg-secondary text-xs font-mono">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white transition hover:scale-105"
+                    style={{ background: BRAND }}
+                  >
+                    Visit Live Website <ExternalLink size={15} />
+                  </a>
+                  <Link
+                    to="/portfolio"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                  >
+                    Case study details <ArrowRight size={15} />
+                  </Link>
+                </div>
               </div>
             </motion.div>
           ))}

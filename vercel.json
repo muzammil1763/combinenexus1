@@ -10,7 +10,7 @@
     { "source": "/about", "destination": "/about/index.html" },
     { "source": "/contact", "destination": "/contact/index.html" },
     {
-      "source": "/((?!assets/|robots\\.txt|sitemap\\.xml|site\\.webmanifest|logo\\.jpeg).*)",
+      "source": "/((?!assets/|robots\\.txt|sitemap\\.xml|site\\.webmanifest|logo\\.jpeg|dollys-tavern\\.jpg).*)",
       "destination": "/index.html"
     }
   ],
