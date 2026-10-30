@@ -1,0 +1,150 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cyan: var(--cyan);
+  --color-cyan-glow: var(--cyan-glow);
+  --color-orange-accent: var(--orange-accent);
+  --color-navy: var(--navy);
+  --color-slate-card: var(--slate-card);
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /*
+   * Combine Nexus brand palette — extracted from logo:
+   *   Background : #000000  (pure black)
+   *   Blue range : #1565C0 → #1E88E5 → #29B6F6  (deep → sky blue)
+   *   Orange/Red : #B71C1C → #E53935 → #F57C00 → #FFB300  (red → amber)
+   */
+
+  /* ── Core surfaces ── */
+  --background:          #000000;          /* pure black */
+  --foreground:          #F5F5F5;          /* near-white text */
+  --card:                #0A0A0F;          /* very dark blue-black */
+  --card-foreground:     #F5F5F5;
+  --popover:             #07070D;
+  --popover-foreground:  #F5F5F5;
+
+  /* ── Primary = logo blue ── */
+  --primary:             #1E88E5;          /* mid logo blue */
+  --primary-foreground:  #FFFFFF;
+
+  /* ── Secondary = dark blue-tinted surface ── */
+  --secondary:           #0D1B2E;          /* deep navy */
+  --secondary-foreground:#F5F5F5;
+
+  /* ── Muted ── */
+  --muted:               #111827;
+  --muted-foreground:    #9CA3AF;
+
+  /* ── Accent = logo orange ── */
+  --accent:              #F57C00;          /* logo orange */
+  --accent-foreground:   #FFFFFF;
+
+  /* ── Destructive ── */
+  --destructive:         #E53935;          /* logo red */
+  --destructive-foreground: #FFFFFF;
+
+  /* ── Borders / inputs ── */
+  --border:              rgba(255,255,255,0.09);
+  --input:               rgba(255,255,255,0.11);
+  --ring:                #1E88E5;
+
+  /* ── Brand aliases ── */
+  --cyan:                #29B6F6;          /* light logo blue */
+  --cyan-glow:           #1E88E5;
+  --orange-accent:       #FFB300;          /* logo amber/yellow */
+  --navy:                #000000;
+  --slate-card:          #0A0A0F;
+
+  /* ── Gradients matching logo ── */
+  --gradient-hero:
+    radial-gradient(ellipse at top left,  rgba(30,136,229,0.30) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(245,124,0,0.25) 0%, transparent 55%),
+    linear-gradient(180deg, #000000, #000000);
+
+  /* Blue → Red → Orange → Amber — full logo spectrum */
+  --gradient-brand:
+    linear-gradient(135deg, #1565C0 0%, #1E88E5 25%, #E53935 55%, #F57C00 78%, #FFB300 100%);
+
+  --gradient-card:
+    linear-gradient(160deg, rgba(13,27,46,0.90), rgba(7,7,13,0.80));
+
+  --shadow-glow:  0 10px 40px -10px rgba(30,136,229,0.55);
+  --shadow-card:  0 20px 50px -20px rgba(0,0,0,0.75);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { letter-spacing: -0.02em; font-weight: 700; }
+}
+
+@layer utilities {
+  .bg-hero { background: var(--gradient-hero); }
+  .bg-brand-gradient { background: var(--gradient-brand); }
+  .text-brand-gradient {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass {
+    background: rgba(13, 27, 46, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glow-cyan { box-shadow: var(--shadow-glow); }
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .container-x { @apply max-w-7xl mx-auto px-6 lg:px-10; }
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  src: local("Inter");
+}

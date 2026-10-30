@@ -1,0 +1,25 @@
+# Combine Nexus — robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_vercel/
+
+# AI & Search Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://combinenexus.com/sitemap.xml
+Host: https://combinenexus.com
+
