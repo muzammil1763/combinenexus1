@@ -2,7 +2,13 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
+    { "source": "/services", "destination": "/services/index.html" },
+    { "source": "/portfolio", "destination": "/portfolio/index.html" },
+    { "source": "/about", "destination": "/about/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
     {
       "source": "/((?!assets/|robots\\.txt|sitemap\\.xml|site\\.webmanifest|logo\\.jpeg).*)",
       "destination": "/index.html"
